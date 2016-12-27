@@ -1,0 +1,107 @@
+git 入门操作
+
+第一步 生成 ssh 秘钥
+
+	输入 ssh-keygen ，按enter，一直按enter 直到出现下面
+	
+	在 C/用户/usuename/ssh
+
+第二部 登录github 添加 公钥 
+	（id_rsa.pub)里边的内容到 ，github
+	
+第三步
+	配置个人的用户名称和电子邮件地址：
+	$ git config --global user.name "lxf"
+	$ git config --global user.email 617105706@qq.com
+	
+	查看现在的配置信息
+		用户名和邮箱等
+		
+		$ git config --list
+第四部
+
+	cd ../   进入工作区
+	
+	pwd   查看当前目录 
+	
+	git init   创建本地版本库
+	
+	添加文件
+	
+	git status 查看状态
+	
+	git add . 提交
+	
+	git commit -u "提交到本地库--说明 记录"
+	
+	//第一次提交到 远程库
+	git remote add origin git@github.com:18712868566/<name>.git
+	
+	//再次提交时
+	$ git push -u origin master
+	
+	//提交到分支
+		git branch   查看本地分支
+		
+		git branch -a 查看远程分支
+		
+		***注意提交时，要注意切换分支，切换至匹配的分支
+		$ git push -u origin <分支name>
+	
+	Git鼓励大量使用分支：
+
+	查看分支：git branch
+	
+	查看远程分支：git branch -a
+
+	创建分支：git branch <name>
+	
+	创建远程分支
+		创建分支      $ git branch 分支名
+		推送到远程    $ git push origin 分支名
+
+	切换分支：git checkout <name>
+
+	创建+切换分支：git checkout -b <name>
+
+	合并某分支到当前分支：git merge <name>
+
+	删除分支：git branch -D <name>
+	
+	删除远程分支：$ git push origin :three
+
+	##github 远程仓库的合并与更新  
+	参考 ：http://www.360doc.com/content/13/0814/10/9171956_307028720.shtml
+	
+	方法一：
+	
+		1、查看远程仓库
+			git remote -v
+		2、从远程获取最新版本到本地
+			git fetch origin master
+			//从远程 origin 仓库 master 分支下载代码到本地的 origin master
+		3、比较本地的仓库和远程参考的区别
+			git log -p master..origin/master
+			//现实改动的地方
+		4、把远程下载下来的代码合并到本地仓库，（远程—-和本地合并)
+			git merge origin/master
+		
+	方法二：
+		0、查看远程分支
+			git remote -v
+		1、从远程获取最新的版本到本地
+			git fetch origin/master.temp
+				//从远程的 origin仓库的 master分支下载到本地并新建一个temp分支
+				
+		2、比较本地的仓库和远程仓库的区别
+			git diff temp
+				//比较 master分支和temp分支的区别
+				
+		3、合并分支temp到master
+			git merge temp
+			
+		4、合并完毕，清除temp分支
+			git branch -d temp
+		
+		
+	
