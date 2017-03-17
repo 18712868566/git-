@@ -1,0 +1,149 @@
+
+//提交到github dome 目录下
+$ git remote add origin git@github.com:18712868566/dome.git
+
+
+
+
+
+Git基本常用命令如下：
+
+   mkdir：         XX (创建一个空目录 XX指目录名)
+
+   pwd：          显示当前目录的路径。
+
+   git init          把当前的目录变成可以管理的git仓库，生成隐藏.git文件。
+
+   git add XX       把xx文件添加到暂存区去。
+
+   git commit –m “XX”  提交文件 –m 后面的是注释。
+
+   git status        查看仓库状态
+
+   git diff  XX      查看XX文件修改了那些内容
+
+   git log          查看历史记录
+
+   git reset  –hard HEAD^ 或者 git reset  –hard HEAD~ 回退到上一个版本
+
+                        (如果想回退到100个版本，使用git reset –hard HEAD~100 )
+
+   cat XX         查看XX文件内容
+
+   git reflog       查看历史记录的版本号id
+
+   git checkout — XX  把XX文件在工作区的修改全部撤销。
+
+   git rm XX          删除XX文件
+
+   git remote add origin https://github.com/tugenhua0707/testgit 关联一个远程库
+
+   git push –u(第一次要用-u 以后不需要) origin master 把当前master分支推送到远程库
+
+   git clone https://github.com/tugenhua0707/testgit  从远程库中克隆
+
+   git checkout –b dev  创建dev分支 并切换到dev分支上
+
+   git branch  查看当前所有的分支
+
+   git checkout master 切换回master分支
+
+   git merge dev    在当前的分支上合并dev分支
+
+   git branch –d dev 删除dev分支
+
+   git branch name  创建分支
+
+   git stash 把当前的工作隐藏起来 等以后恢复现场后继续工作
+
+   git stash list 查看所有被隐藏的文件列表
+
+   git stash apply 恢复被隐藏的文件，但是内容不删除
+
+   git stash drop 删除文件
+
+   git stash pop 恢复文件的同时 也删除文件
+
+   git remote 查看远程库的信息
+
+   git remote –v 查看远程库的详细信息
+
+   git push origin master  Git会把master分支推送到远程库对应的远程分支上
+
+
+
+     /----------------------------/
+   git config --global user.name "lixufeng"
+
+   git config --global user.email "617105706@qq.com"
+
+   创建目录:
+   cd D:          //1
+
+   cd www:        //2   
+
+   mkdir testgit  //3
+
+   //在D盘www目录下创建一个名为testgit的版本库
+
+   查看目录：
+
+   pwd            //显示当前目录
+
+   git init       //把这个目录变成git可以管理的仓库这时testgit目录下会有一个.git的目录
+
+   
+   1、添加
+          git add xxx.txt
+
+   2、提交
+         git  commit xxx.txt -m "提交的注释，版本管理"
+   3、产看状态
+         git status    //是否提交
+   4、查看改变内容
+         git diff xxx.txt
+         (修改文件后有效)
+   5、查看更改后再次提交
+         git commit -m "更改内容说明"
+
+         //提交后再次查看状态
+
+   -----------------------------------------
+         
+   版本回退
+
+   1、查看历史记录
+      git log 
+
+      git log --pertty=oneline  (等简单的提示信息)
+
+   2、版本回退
+      git reset --hard HEAD^  (向上回退一个版本，回退更多版本+^或者HEAD~100)
+
+   3、查看内容，
+      cat xxx.txt
+
+   4、获取版本号
+      git reflog
+          git reset --hard 版本号
+
+   ---------------------------------------
+
+   什么是工作区？什么是暂存区？
+
+   工作区：就是你在电脑上看到的目录，比如目录下testgit里的文件(.git隐藏目录版本库除外)。或者以后需要再新建的目录文件等等都属于工作区范畴。
+
+   版本库(Repository)：工作区有一个隐藏目录.git,这个不属于工作区，这是版本库。其中版本库里面存了很多东西，其中最重要的就是stage(暂存区)，还有Git为我们自动创建了第一个分支master,以及指向master的一个指针HEAD。
+
+   我们前面说过使用Git提交文件到版本库有两步：
+
+   第一步：是使用 git add 把文件添加进去，实际上就是把文件添加到暂存区。
+
+   第二步：使用git commit提交更改，实际上就是把暂存区的所有内容提交到当前分支上。
+
+   1、丢弃工作区的修改（更改文件后，没有同步前，撤销之间的更改操作）
+      git checkout -- file
+
+
+
+
